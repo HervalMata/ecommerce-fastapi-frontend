@@ -63,7 +63,7 @@ class AuthService {
         }
 
         const result = await response.json()
-        return result.data;
+        return result.data
     }
 
     async register(userData: any): Promise<any> {
