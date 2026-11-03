@@ -99,7 +99,7 @@ class AuthService {
         return this.requestFormData<any>('/users/upload-avatar', formData)
     }
 
-    async changePassword(paaswordData: any): Promise<any> {
+    async changePassword(passwordData: any): Promise<any> {
         return this.request<any>('/users/change-password', {
             method: 'PUT',
             body: JSON.stringify(passwordData)
@@ -121,21 +121,21 @@ class AuthService {
     }
 
     saveAuthData(token: string, role: string): void {
-        localstorage.setItem('token', token)
-        localstorage.setItem('userRole', role)
+        localStorage.setItem('token', token)
+        localStorage.setItem('userRole', role)
     }
 
     logout(): void {
-        localstorage.removeItem('token')
-        localstorage.removeItem('userRole')
+        localStorage.removeItem('token')
+        localStorage.removeItem('userRole')
     }
 
     getToken(): string | null {
-        return localstorage.getItem('token')
+        return localStorage.getItem('token')
     }
 
     getUserRole(): string | null {
-        return localstorage.getItem('userRole')
+        return localStorage.getItem('userRole')
     }
 
     isAuthenticated(): boolean {

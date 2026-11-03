@@ -74,3 +74,5 @@ class CartService {
     }
 
 }
+
+export const cartService = new CartService()
