@@ -7,7 +7,7 @@ class CategoryService {
         endpoint: string,
         options: RequestInit = {}
     ): Promise<T> {
-        const token = localstorage.getItem('token')
+        const token = localStorage.getItem('token')
 
         const headers: Record<string, string> = {
             'Content-Type': 'application/json',

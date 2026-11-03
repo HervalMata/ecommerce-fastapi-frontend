@@ -11,7 +11,7 @@ class ProductService {
             'Content-Type': 'application/json',
         }
 
-        const token = this.getToken()
+        const token = localStorage.getItem('token')
 
         if (token) {
             headers['Authorization'] = `Bearer ${token}`
@@ -42,7 +42,7 @@ class ProductService {
         options: RequestInit = {}
     ): Promise<T> {
 
-        const token = this.getToken()
+        const token = localStorage.getItem('token')
 
         const headers: Record<string, string> = {}
 
