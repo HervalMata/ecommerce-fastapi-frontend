@@ -2,6 +2,7 @@
 
 import { useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import './error.css'
 
 // Main Page component with Suspense boundary
@@ -17,6 +18,8 @@ function AuthErrorContent() {
     const router = useRouter()
 
     const searchParams = useSearchParams()
+
+    const error = searchParams.get('error')
 
     useEffect(() => {
         // Redirect after 5 seconds
