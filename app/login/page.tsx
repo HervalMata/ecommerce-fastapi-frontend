@@ -33,7 +33,7 @@ export default function LoginPage() {
             // Auto login
             const result = await authService.login({
                 email: formData.email,
-                name: formData.name,
+                password: formData.password,
             })
     
             // Save only token and role to localStorage
