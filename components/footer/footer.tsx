@@ -1,10 +1,18 @@
 'use client'
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import './footer.css'
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear()
+    // Definimos o ano atual como o ano de desenvolvimento (ex: 2026) para o SSR estático.
+    // Assim o Next.js consegue fazer o build sem erros.
+    const [currentYear, setCurrentYear] = useState(2026);
+
+    useEffect(() => {
+        // Atualiza para o ano real assim que o componente hidrata no navegador
+        setCurrentYear(new Date().getFullYear());
+    }, []);
 
     return (
         <footer className="footer">
@@ -32,20 +40,20 @@ export default function Footer() {
                     <div className="footer-section">
                         <h3>Links Rápidos</h3>
                         <ul>
-                            <link href="/products">Todos os Produtos</link>
-                            <link href="/about">Sobre Nós</link>
-                            <link href="/contact">Entre em Contato</link>
-                            <link href="/faq">FAQ</link>
+                            <Link href="/products">Todos os Produtos</Link>
+                            <Link href="/about">Sobre Nós</Link>
+                            <Link href="/contact">Entre em Contato</Link>
+                            <Link href="/faq">FAQ</Link>
                         </ul>
                     </div>
 
                     <div className="footer-section">
                         <h3>Serviços Ao Comprador</h3>
                         <ul>
-                            <link href="/shipping">Informações de Entrega</link>
-                            <link href="/return">Politica de Troca</link>
-                            <link href="/terms">Termos e Condições</link>
-                            <link href="/piracy">Politica de Privacidade</link>
+                            <Link href="/shipping">Informações de Entrega</Link>
+                            <Link href="/return">Politica de Troca</Link>
+                            <Link href="/terms">Termos e Condições</Link>
+                            <Link href="/privacy">Politica de Privacidade</Link>
                         </ul>
                     </div>
                 </div>
