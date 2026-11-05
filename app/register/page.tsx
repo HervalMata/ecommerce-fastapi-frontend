@@ -21,7 +21,7 @@ export default function RegisterPage() {
     const handleChange = (e: React.ChageEvent<HTMLInputElement>) => {
         setFormData({
             ...formData,
-            [e.target.name] = e.target.value,
+            [e.target.name]: e.target.value,
         })
         setError('')
     }
