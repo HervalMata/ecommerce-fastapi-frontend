@@ -3,7 +3,7 @@
 import { useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { authService } from "@/services/authService";
-import './succss.css'
+import './success.css'
 
 // Main Page component with Suspense boundary
 export default function AuthSuccessPage() {
