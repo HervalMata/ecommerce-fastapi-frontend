@@ -80,7 +80,7 @@ export default function RegisterPage() {
                 {error && (
                     <div className="error-alert">
                         <span>⚠️</span>
-                        <p>{error</p>
+                        <p>{error}</p>
                     </div>
                 )}
 
