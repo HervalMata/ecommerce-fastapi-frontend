@@ -66,55 +66,55 @@ class AuthService {
         return result.data
     }
 
-    async register(userData: unknown): Promise<never> {
-        return this.request<never>('/auth/register', {
+    async register(userData: any): Promise<any> {
+        return this.request<any>('/auth/register', {
             method: 'POST',
             body: JSON.stringify(userData)
         })
     }
 
-    async login(credentials: never): Promise<never> {
-        return this.request<never>('/auth/login', {
+    async login(credentials: any): Promise<any> {
+        return this.request<any>('/auth/login', {
             method: 'POST',
             body: JSON.stringify(credentials)
         })
     }
 
-    async getCurrentUser(): Promise<never> {
-        return this.request<never>('/users/me', {
+    async getCurrentUser(): Promise<any> {
+        return this.request<any>('/users/me', {
             method: 'GET'
         })
     }
 
-    async updateProfile(updateData: never): Promise<never> {
-        return this.request<never>('/users/update-profile', {
+    async updateProfile(updateData: any): Promise<any> {
+        return this.request<any>('/users/update-profile', {
             method: 'PUT',
             body: JSON.stringify(updateData)
         })
     }
 
-    async uploadAvatar(file: File): Promise<never> {
+    async uploadAvatar(file: File): Promise<any> {
         const formData = new FormData()
         formData.append('file', file)
-        return this.requestFormData<never>('/users/upload-avatar', formData)
+        return this.requestFormData<any>('/users/upload-avatar', formData)
     }
 
-    async changePassword(passwordData: never): Promise<never> {
-        return this.request<never>('/users/change-password', {
+    async changePassword(passwordData: any): Promise<any> {
+        return this.request<any>('/users/change-password', {
             method: 'PUT',
             body: JSON.stringify(passwordData)
         })
     }
 
-    async forgotPassword(email: string): Promise<never> {
-        return this.request<never>('/auth/forgot-password', {
+    async forgotPassword(email: string): Promise<any> {
+        return this.request<any>('/auth/forgot-password', {
             method: 'POST',
             body: JSON.stringify({ email })
         })
     }
 
-    async resetPassword(code: string, password: string): Promise<never> {
-        return this.request<never>('/auth/reset-password', {
+    async resetPassword(code: string, password: string): Promise<any> {
+        return this.request<any>('/auth/reset-password', {
             method: 'POST',
             body: JSON.stringify({ code, password })
         })
