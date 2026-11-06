@@ -352,14 +352,15 @@ export default function productsPage() {
                             <p>Tente ajustar sua pesquisa ou critérios de filtro</p>
                         </div>
                     ) : (
-                        <div>
+                        <div className="products-grid four-per-row">
                             {displayedProducts.map((product, index) => {
                                 const rating = ratingMap[product.id]
                                 const averageRating = rating?.average_rating || 0
                                 const totalReviews = rating?.total_reviews || 0
 
                                 return (
-                                    <div
+                                    <>
+                                        <div
                                         key={product.id}
                                         className="product-card"
                                         ref={index === displayedProducts.length - 1 ? lastProductRef : null}
@@ -456,6 +457,7 @@ export default function productsPage() {
                         <div className="results-count">
                             Mostrando {displayedProducts.length} de {totalProducts} produtos
                         </div>
+                    </>
                     )}
                 </div>
             </div>
