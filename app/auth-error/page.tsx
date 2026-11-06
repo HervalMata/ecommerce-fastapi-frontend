@@ -6,7 +6,7 @@ import Link from "next/link";
 import './error.css'
 
 // Main Page component with Suspense boundary
-export default function AuthErrorage() {
+export default function AuthErrorPage() {
     return (
         <Suspense fallback={<AuthErrorFallback />}>
             <AuthErrorContent />
