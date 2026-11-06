@@ -70,7 +70,7 @@ function CategoryContent() {
                     <p>Veja os produtos por categoria</p>
                 </div>
 
-                {categories.lentgh === 0 ? (
+                {categories.length === 0 ? (
                     <div className="empty-state">
                         <div className="empty-icon">📂</div>
                         <h3>Nenhuma Categoria Encontrada</h3>
