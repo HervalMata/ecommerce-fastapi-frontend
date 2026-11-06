@@ -50,7 +50,7 @@ function AuthSuccessContent() {
         <div className="auth-success-container">
             <div className="success-card">
                 <div className="success-icon"></div>
-                <h2>AUtenticado com sucesso!</h2>
+                <h2>Autenticado com sucesso!</h2>
                 <p>Você está autenticado com sucesso</p>
                 <div className="loading-spinner"></div>
                 <p>Redirecionando você para...</p>
