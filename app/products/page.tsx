@@ -58,12 +58,12 @@ export default function productsPage() {
         try {
             const cart = await cartService.getCart()
             const itemsMap: Record<number, number> = {}
-            cart_items?.forEach((item: any) => {
+            cart.items?.forEach((item: any) => {
                 itemsMap[item.productId] -= item.quantity
             });
             setCartItemsMap(itemsMap)
         } catch (error) {
-            console.error('Falha ao carregar carrinho: ', cart)
+            console.error('Falha ao carregar carrinho: ', error)
         }
     }
 
@@ -146,34 +146,6 @@ export default function productsPage() {
         return stars
     }
 
-    const filteredProducts = getFilteredAndSortedProducts()
-    const totalProducts = filteredProducts.length
-
-
-    const handleAddToCart = async (product: any) => {
-        if (!authService.isAuthenticated()) {
-            router.push('/login')
-            return
-        }
-
-        try {
-            await cartService.addToCart(product.id, 1)
-            await fetchCartItems()
-            window.dispatchEvent(new Event('cartUpdated'))
-            showToast(`${product.name} adicionado para o carrinho!`)
-        } catch (error: any) {
-            showToast(error.message || 'Falha ao adicionar para o carrinho', 'error')
-        }
-    }
-
-    const showToast = (message: string, type: 'success' | 'error' = 'success') => {
-        const toast = document.createElement('div')
-        toast.className = `toast-notification ${type}`
-        toast.textContent = message
-        document.body.appendChild(toast)
-        setInterval(() => toast.remove(), 3000);
-    }
-
     const getFilteredAndSortedProducts = useCallback(
       () => {
         let result = [...products]
@@ -211,6 +183,35 @@ export default function productsPage() {
       [products, searchTerm, sortBy],
     )
 
+    const filteredProducts = getFilteredAndSortedProducts()
+    const totalProducts = filteredProducts.length
+
+
+    const handleAddToCart = async (product: any) => {
+        if (!authService.isAuthenticated()) {
+            router.push('/login')
+            return
+        }
+
+        try {
+            await cartService.addToCart(product.id, 1)
+            await fetchCartItems()
+            window.dispatchEvent(new Event('cartUpdated'))
+            showToast(`${product.name} adicionado para o carrinho!`)
+        } catch (error: any) {
+            showToast(error.message || 'Falha ao adicionar para o carrinho', 'error')
+        }
+    }
+
+    const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+        const toast = document.createElement('div')
+        toast.className = `toast-notification ${type}`
+        toast.textContent = message
+        document.body.appendChild(toast)
+        setInterval(() => toast.remove(), 3000);
+    }
+
+    
     useEffect(() => {
       const filtered = getFilteredAndSortedProducts()
       setDisplayedProducts(filtered.slice(0, page * ITEMS_PER_PAGE))
@@ -250,7 +251,7 @@ export default function productsPage() {
     
       return () => {
         if (observerRef.current) {
-            observerRef.current.diconnect()
+            observerRef.current.disconnect()
         }
       }
     }, [displayedProducts, hasMore, loading, loadingMore])
@@ -374,8 +375,8 @@ export default function productsPage() {
                                                     src={product.imageUrl} 
                                                     alt={product.name} 
                                                     className="product-image"
-                                                    onError={(E) => {
-                                                        const target = e.target as HTMLImageEvent
+                                                    onError={(e) => {
+                                                        const target = e.target as HTMLImageElement
                                                         target.src = '/images/product.jpeg'
                                                     }}
                                                 />
