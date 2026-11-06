@@ -352,6 +352,7 @@ export default function productsPage() {
                             <p>Tente ajustar sua pesquisa ou critérios de filtro</p>
                         </div>
                     ) : (
+                        <>
                         <div className="products-grid four-per-row">
                             {displayedProducts.map((product, index) => {
                                 const rating = ratingMap[product.id]
@@ -359,7 +360,7 @@ export default function productsPage() {
                                 const totalReviews = rating?.total_reviews || 0
 
                                 return (
-                                    <>
+                                    
                                         <div
                                         key={product.id}
                                         className="product-card"
