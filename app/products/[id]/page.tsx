@@ -1,7 +1,7 @@
 'use client'
 
-import { useParams, useRouter, Suspense } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
 import { productService } from "@/services/productService";
 import { reviewService } from '@/services/reviewService'
 import { cartService }from '@/services/cartService'
