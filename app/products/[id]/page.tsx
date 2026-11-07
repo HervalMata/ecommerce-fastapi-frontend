@@ -7,6 +7,7 @@ import { reviewService } from '@/services/reviewService'
 import { cartService }from '@/services/cartService'
 import { authService } from '@/services/authService'
 import Link from "next/link";
+import 'productDetails.css'
 
 export default function ProductDetailsPage() {
     const router = useRouter()
@@ -185,7 +186,8 @@ export default function ProductDetailsPage() {
     }
 
     return (
-        <div className="product-details-container">
+        <Suspense fallback={<div>Carregando os dados do Produto...</div>}>
+            <div className="product-details-container">
             <div className="container">
                 {/* Breadcrumb */}
                 <div className="breadcrumb">
@@ -345,5 +347,6 @@ export default function ProductDetailsPage() {
                 </div>
             </div>
         </div>
+        </Suspense>
     )
 }
