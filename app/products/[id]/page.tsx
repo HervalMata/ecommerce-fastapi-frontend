@@ -313,7 +313,7 @@ export default function ProductDetailsPage() {
                                     <div className="stars-large">
                                         {renderStars(ratingStats.average_rating)}
                                     </div>
-                                    <span className="rating-value">{ratingStats.averag_rating.toFixed(1)} de 5</span>
+                                    <span className="rating-value">{ratingStats.average_rating.toFixed(1)} de 5</span>
                                     <span className="total-reviews">Baseado em {ratingStats.total_reviews} avaliações</span>
                                 </div>
                             )}
