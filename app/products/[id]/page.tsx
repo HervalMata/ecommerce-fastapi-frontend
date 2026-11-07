@@ -7,7 +7,7 @@ import { reviewService } from '@/services/reviewService'
 import { cartService }from '@/services/cartService'
 import { authService } from '@/services/authService'
 import Link from "next/link";
-import 'productDetails.css'
+import './productDetails.css'
 
 export default function ProductDetailsPage() {
     const router = useRouter()
