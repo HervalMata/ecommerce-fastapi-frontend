@@ -9,7 +9,7 @@ import { authService } from '@/services/authService'
 import Link from "next/link";
 import './productDetails.css'
 
-export default function ProductDetailsContent() {
+function ProductDetailsContent() {
     const router = useRouter()
     const params = useParams()
     const productId = params.id as string
