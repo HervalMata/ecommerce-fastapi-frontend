@@ -21,7 +21,7 @@ export default function ProductDetailsPage() {
     const [activeImage, setActiveImage] = useState('')
     const [cartQuantity, setCartQuantity] = useState(0)
     const [ratingStats, setRatingStats] = useState({
-        averag_rating: 0,
+        average_rating: 0,
         total_reviews: 0
     })
 
@@ -249,7 +249,7 @@ export default function ProductDetailsPage() {
                                     <>
                                         <div className="quantity-controls-large">
                                             <button
-                                                onClick={() => handleCartUpdate(cartQuantity - 1)}
+                                                onClick={() => handleUpdateCart(cartQuantity - 1)}
                                                 disabled={addingToCart || cartQuantity <= 1}
                                                 className="qty-btn"
                                             >
@@ -257,7 +257,7 @@ export default function ProductDetailsPage() {
                                             </button>
                                             <span className="qty-value">{cartQuantity}</span>
                                             <button
-                                                onClick={() => handleCartUpdate(cartQuantity + 1)}
+                                                onClick={() => handleUpdateCart(cartQuantity + 1)}
                                                 disabled={addingToCart || cartQuantity >= product.stockQuantity}
                                                 className="qty-btn"
                                             >
