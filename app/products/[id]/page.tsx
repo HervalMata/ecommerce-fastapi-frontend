@@ -9,7 +9,7 @@ import { authService } from '@/services/authService'
 import Link from "next/link";
 import './productDetails.css'
 
-export default function ProductDetailsPage() {
+export default function ProductDetailsContent() {
     const router = useRouter()
     const params = useParams()
     const productId = params.id as string
@@ -186,8 +186,8 @@ export default function ProductDetailsPage() {
     }
 
     return (
-        <Suspense fallback={<div>Carregando os dados do Produto...</div>}>
-            <div className="product-details-container">
+    
+        <div className="product-details-container">
             <div className="container">
                 {/* Breadcrumb */}
                 <div className="breadcrumb">
@@ -347,6 +347,22 @@ export default function ProductDetailsPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function ProductDetailsPage() {
+    return (
+        <Suspense fallback={
+            <div className="product-details-container">
+                <div className="container">
+                    <div className="loading-state">
+                        <div className="loading-spinner"></div>
+                        <p>Carregando os dados do Produto...</p>
+                    </div>
+                </div>
+            </div>
+        }>
+            <ProductDetailsContent />
         </Suspense>
     )
 }
