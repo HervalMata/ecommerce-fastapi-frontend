@@ -1,6 +1,6 @@
 'use client'
 
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, Suspense } from "next/navigation";
 import { useState, useEffect } from "react";
 import { productService } from "@/services/productService";
 import { reviewService } from '@/services/reviewService'
