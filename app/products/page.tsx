@@ -86,7 +86,7 @@ function ProductsContent() {
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchProducts()
-    }, [fetchProducts, selectedCategory])
+    }, [fetchProducts])
 
     useEffect(() => {
       if (authService.isAuthenticated()) {
@@ -402,7 +402,7 @@ function ProductsContent() {
 
                                                 <div className="price-section">
                                                 <span className="product-price">
-                                                    R$ {parseFloat(product.price.toLocaleString("pt-BR", {}))}
+                                                    R$ {Number(product.price).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                                 </span>
                                                     <span className="product-stock">
                                                     {product.stockQuantity}
@@ -412,7 +412,7 @@ function ProductsContent() {
                                                 {cartItemsMap[product.id] ? (
                                                     <div className="cart-quantity-controls">
                                                         <button
-                                                            onClick={() => handleUpdateQuantity(product.id, 1)}
+                                                            onClick={() => handleUpdateQuantity(product.id, -1)}
                                                             className="qty-btn"
                                                             disabled={product.stockQuantity === 0}
                                                         >
@@ -420,7 +420,7 @@ function ProductsContent() {
                                                         </button>
                                                         <span className="qty-value">{cartItemsMap[product.id]}</span>
                                                         <button
-                                                            onClick={() => handleUpdateQuantity(product.id, -1)}
+                                                            onClick={() => handleUpdateQuantity(product.id, 1)}
                                                             className="qty-btn"
                                                             disabled={product.stockQuantity === 0}
                                                         >
