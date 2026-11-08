@@ -107,8 +107,8 @@ export default function ProfilePage() {
 
         try {
             await authService.changePassword({
-                oldPassword: passwordForm.confirmPassword,
-                newPassword: passwordForm.confirmPassword,
+                oldPassword: passwordForm.oldPassword,
+                newPassword: passwordForm.newPassword,
             })
 
             setSuccessMessage('Senha atualizada com sucesso')
@@ -135,7 +135,7 @@ export default function ProfilePage() {
         }
 
         if (file.size > 5 * 1024 * 1024) {
-            setErrorMessage('A imagem deve ter pelo menos 5 MB')
+            setErrorMessage('A imagem deve ter no máximo 5 MB')
             return
         }
 
@@ -152,7 +152,7 @@ export default function ProfilePage() {
         } catch (error: any) {
             setErrorMessage(error.message || 'Falha ao atualizar o avatar')
         } finally {
-            setUpdating(false)
+            setUploading(false)
         }
     }
 
@@ -258,7 +258,7 @@ export default function ProfilePage() {
                                         <label htmlFor="address">Endereço</label>
                                         <textarea
                                             id="address"
-                                            name="addresse"
+                                            name="address"
                                             value={profileForm.address || ''}
                                             onChange={handleProfileChange}
                                             placeholder="Digite seu endereço"
@@ -311,7 +311,7 @@ export default function ProfilePage() {
                                     </div>
 
                                     <div className="form-group">
-                                        <label htmlFor="confirmPassword">Nova Senha</label>
+                                        <label htmlFor="confirmPassword">Confirme a Nova Senha</label>
                                         <input
                                             type="password"
                                             id="confirmPassword"

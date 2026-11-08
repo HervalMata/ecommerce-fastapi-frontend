@@ -402,7 +402,11 @@ function ProductsContent() {
 
                                                 <div className="price-section">
                                                 <span className="product-price">
-                                                    R$ {Number(product.price).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                                    {
+                                                        product.price === null ? 'Preço Indiponível'
+                                                            : `R$ ${Number(product.price)
+                                                                .toLocaleString("pt-BR", 
+                                                                    {minimumFractionDigits: 2, maximumFractionDigits: 2})}`}
                                                 </span>
                                                     <span className="product-stock">
                                                     {product.stockQuantity}
