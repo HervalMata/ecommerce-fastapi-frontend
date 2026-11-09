@@ -60,7 +60,7 @@ function ResetPasswordContent() {
             return
         }
 
-        if (formData.code.length !== 0) {
+        if (formData.code.length !== 6) {
             setError('Código de recuperação de senha deve ter pelo menos 6 caracteres')
             return
         }
@@ -138,11 +138,11 @@ function ResetPasswordContent() {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="newPassword">Nova Senha</label>
+                        <label htmlFor="password">Nova Senha</label>
                         <input
                             type="password"
-                            id="newPassword"
-                            name="newPassword"
+                            id="password"
+                            name="password"
                             value={formData.password}
                             onChange={handleChange}
                             placeholder="Digite a nova senha (min 6 caracteres)"
@@ -170,7 +170,7 @@ function ResetPasswordContent() {
                         className="submit-btn"
                         disabled={loading}
                     >
-                        {loading ? 'Recuperndo...' : 'Recuperar Senha'}
+                        {loading ? 'Recuperando...' : 'Recuperar Senha'}
                     </button>
                 </form>
 
