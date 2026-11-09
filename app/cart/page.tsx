@@ -69,7 +69,7 @@ export default function CartPage() {
     }
 
     const handleRemoveItem = async (productId: number) => {
-        if (!confirm('Limpar todo o carrinho?')) return
+        if (!confirm('Remover este item do carrinho?')) return
 
         setUpdating(true)
 
@@ -185,7 +185,9 @@ export default function CartPage() {
                                                 className="product-image"
                                                 onError={(e) => {
                                                     const target = e.target as HTMLImageElement
-                                                    target.src = '/omages/product.jpeg'
+                                                    if (target.getAttribute('src') !== '/images/product.jpeg') {
+                                                        target.src = '/images/product.jpeg'
+                                                    }
                                                 }}
                                             />
                                             <div className="product-details">
@@ -210,7 +212,7 @@ export default function CartPage() {
                                             >
                                                 -
                                             </button>
-                                            <span className="qty-value">R$ {item.quantity}</span>
+                                            <span className="qty-value">{item.quantity}</span>
                                             <button
                                                 onClick={(e) => handleAddOne(item.productId)}
                                                 disabled={updating}
@@ -261,7 +263,8 @@ export default function CartPage() {
                             <div className="summary-details">
                                 <div className="summary-row">
                                     <span>Subtotal: ({cart.totalQuantity} itens)</span>
-                                    <span>R$ {parseFloat(cart.totalPrice)}</span>
+                                    <span>R$ {parseFloat(cart.totalPrice).toLocaleString("pt-BR",
+                                        {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
                                 </div>
                                 <div className="summary-row">
                                     <span>Entrega: </span>
@@ -269,11 +272,13 @@ export default function CartPage() {
                                 </div>
                                 <div className="summary-row">
                                     <span>Taxas: </span>
-                                    <span>R$ {parseFloat(cart.totalPrice) * 0.1}</span>
+                                    <span>R$ {(parseFloat(cart.totalPrice) * 0.1).toLocaleString("pt-BR",
+                                        {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
                                 </div>
                                 <div className="summary-row">
                                     <span>Total: </span>
-                                    <span>R$ {parseFloat(cart.totalPrice) * 1.1}</span>
+                                    <span>R$ {(parseFloat(cart.totalPrice) * 1.1).toLocaleString("pt-BR",
+                                        {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
                                 </div>
                             </div>
 
